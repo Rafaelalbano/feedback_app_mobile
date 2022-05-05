@@ -1,9 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { theme } from './src/theme';
 import { Widget } from './src/components/Widget';
 
+import { useFonts, 
+  Inter_400Regular, 
+  Inter_500Medium 
+} from '@expo-google-fonts/inter';
+
+import React from 'react';
+import AppLoading from 'expo-app-loading';
+
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium
+  });  
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <View style={{
       flex: 1,
@@ -11,7 +28,11 @@ export default function App() {
     }}
     >
       <Widget />
-      <StatusBar style="auto" />
+      <StatusBar 
+        style="light" 
+        backgroundColor='transparent'
+        translucent
+      />
     </View>
   );
 }
