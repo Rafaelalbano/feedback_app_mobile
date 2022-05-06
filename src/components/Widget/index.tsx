@@ -30,7 +30,7 @@ function Widget() {
     setFeedbackSent(false);
   }
 
-  function handleFeedbackSent(){
+  function handleFeedbackSent() {
     setFeedbackSent(true);
   }
 
@@ -56,7 +56,7 @@ function Widget() {
 
         {
           feedbackSent ?
-            <Success />
+            <Success onSendAnotherFeedback={handleRestartFeedback} />
             :
             <>
               {
@@ -67,8 +67,8 @@ function Widget() {
                     onFeedbackSent={handleFeedbackSent}
                   />
                   :
-                  <Options onFeedbackTypeChanged={setFeedbackType}/>
-            }
+                  <Options onFeedbackTypeChanged={setFeedbackType} />
+              }
             </>
         }
 
